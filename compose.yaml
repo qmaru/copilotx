@@ -1,0 +1,12 @@
+services:
+  copilotx:
+    image: ghcr.io/qmaru/copilotx
+    container_name: copilotx
+    restart: always
+    environment:
+      - GITHUB_TOKEN_PATH=/data/github_token
+    volumes:
+      - ./data/:/data
+    ports:
+      - "9876:9876"
+    command: ["server", "--host", "0.0.0.0"]

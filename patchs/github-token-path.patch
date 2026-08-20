@@ -1,0 +1,17 @@
+diff --git a/src/config.rs b/src/config.rs
+index 5625b7d..1726c04 100644
+--- a/src/config.rs
++++ b/src/config.rs
+@@ -7,6 +7,12 @@ use std::path::PathBuf;
+ 
+ /// Get the path to the GitHub token file
+ pub fn token_path() -> PathBuf {
++    if let Some(path) = std::env::var_os("GITHUB_TOKEN_PATH") {
++        if !path.is_empty() {
++            return PathBuf::from(path);
++        }
++    }
++
+     dirs::home_dir()
+         .expect("No home directory")
+         .join(".local/share/copilot-api-proxy/github_token")

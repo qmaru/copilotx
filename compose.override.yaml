@@ -1,0 +1,6 @@
+services:
+  copilotx:
+    image: ghcr.io/qmaru/copilotx
+    build:
+      context: .
+      dockerfile: Dockerfile
